@@ -1,0 +1,13 @@
+__pycache__/
+.python-version
+db.sqlite3*
+/.coverage
+/.coveralls.yml
+/*.sh
+/django_finance.egg-info/
+/build/
+/dist/
+/.tox/
+/.vscode/
+my.cnf
+testdata.json
