@@ -26,9 +26,10 @@ class BankStatement(models.Model):
     checksum = models.CharField(max_length=255)
 
     def get_checksum(self):
-        sorted_data = sorted((k, v) for k, v in self.data.items())
-        reference = str(sorted_data).encode('utf8')
-        return hashlib.md5(reference    ).hexdigest()
+        checksum_fields = sorted(f.name for f in self._meta.fields)
+        checksum_fields.remove('checksum')
+        reference = str([getattr(self, f) for f in checksum_fields]).encode('utf8')
+        return hashlib.md5(reference).hexdigest()
 
     def save(self, *args, **kwargs):
         self.checksum = self.get_checksum()
