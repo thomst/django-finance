@@ -7,6 +7,9 @@ class OrderAccount(models.Model):
     iban = models.CharField(max_length=255, unique=True)
     bic = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class BankStatement(models.Model):
     order_account = models.ForeignKey(OrderAccount, models.CASCADE)
