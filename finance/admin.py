@@ -1,4 +1,5 @@
 from django.contrib import admin
+from searchkit.filters import SearchkitFilter
 from finance_mt940.actions import upload_mt940_file
 from .models import OrderAccount
 from .models import BankStatement
@@ -16,19 +17,19 @@ class BankStatementAdmin(admin.ModelAdmin):
     list_select_related = True
     date_hierarchy = 'entry_date'
     list_display = [
-        'order_account',
         'amount',
         'currency',
+        'order_account',
         'applicant_name',
         'applicant_iban',
         'posting_text',
         'entry_date',
         ]
     list_filter = [
+        SearchkitFilter,
         'entry_date',
-        'currency',
-        'applicant_name',
         'posting_text',
+        'applicant_name',
         ]
 
     def has_change_permission(self, request, obj=None):
