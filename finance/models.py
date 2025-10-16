@@ -1,6 +1,5 @@
 import hashlib
 from django.db import models
-from .json import MT940Encoder
 
 
 class OrderAccount(models.Model):
@@ -21,7 +20,6 @@ class BankStatement(models.Model):
     additional_purpose = models.TextField()
     entry_date = models.DateField()
     date = models.DateField()
-    data = models.JSONField(encoder=MT940Encoder)
     checksum = models.CharField(max_length=255)
 
     def get_checksum(self):
