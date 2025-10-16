@@ -30,15 +30,16 @@ ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'searchkit',
+    'finance',
+    'finance_analysis',
+    'finance_mt940',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'finance',
-    'finance_analysis',
-    'finance_mt940',
 ]
 
 MIDDLEWARE = [
