@@ -1,6 +1,9 @@
 from django.contrib import admin
 from searchkit.filters import SearchkitFilter
 from finance_mt940.actions import upload_mt940_file
+from searchkit.models import Search
+from searchkit.admin import SearchkitSearchAdmin as OriginalSearchkitSearchAdmin
+from .forms import SearchForm
 from .models import OrderAccount
 from .models import BankStatement
 
@@ -34,3 +37,12 @@ class BankStatementAdmin(admin.ModelAdmin):
 
     def has_change_permission(self, request, obj=None):
         return False
+
+
+# Unregister the original Search admin.
+admin.site.unregister(Search)
+
+# Register a new Search admin using our customized SearchForm.
+@admin.register(Search)
+class SearchkitSearchAdmin(OriginalSearchkitSearchAdmin):
+    form = SearchForm
