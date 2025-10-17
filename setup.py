@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 from setuptools import setup
-from setuptools import find_namespace_packages
+from setuptools import find_packages
 
 
 def get_version():
@@ -40,8 +40,17 @@ setup(
     url="https://github.com/thomst/django-finance",
     license="BSD License",
     platforms=["OS Independent"],
-    packages=find_namespace_packages(exclude=["example"]),
-    include_package_data=True,
+    packages=find_packages(include=[
+        'finance',
+        'finance.*',
+        'finance_mt940',
+        'finance_mt940.*'
+        ]),
+    package_data={
+        'finance': ['templates/**'],
+        'finance_mt940': ['templates/**'],
+        },
+    include_package_data=False,
     install_requires=[
         "Django>=3.0",
     ],
