@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost']
 INSTALLED_APPS = [
     'searchkit',
     'finance',
-    'finance_analysis',
     'finance_mt940',
     'django.contrib.admin',
     'django.contrib.auth',
