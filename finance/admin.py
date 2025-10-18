@@ -29,6 +29,7 @@ class BankStatementAdmin(admin.ModelAdmin):
         'entry_date',
         ]
     list_filter = [
+        'order_account',
         SearchkitFilter,
         'entry_date',
         'posting_text',
