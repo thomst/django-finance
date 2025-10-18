@@ -53,6 +53,8 @@ setup(
     include_package_data=False,
     install_requires=[
         "Django>=3.0",
+        "django-searchkit",
+        "mt-940",
     ],
     classifiers=[
         dev_status,
