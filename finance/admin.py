@@ -1,9 +1,9 @@
 from django.contrib import admin
-from searchkit.filters import SearchkitFilter
 from finance_mt940.actions import upload_mt940_file
 from searchkit.models import Search
 from searchkit.admin import SearchkitSearchAdmin as OriginalSearchkitSearchAdmin
 from .forms import SearchForm
+from .filters import SearchkitFilter
 from .models import OrderAccount
 from .models import BankStatement
 from .models import SearchToAccount
