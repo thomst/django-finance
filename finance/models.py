@@ -11,6 +11,11 @@ class OrderAccount(models.Model):
         return self.name
 
 
+class SearchToAccount(models.Model):
+    search = models.ForeignKey('searchkit.Search', models.CASCADE)
+    order_account = models.ForeignKey(OrderAccount, models.CASCADE)
+
+
 class BankStatement(models.Model):
     order_account = models.ForeignKey(OrderAccount, models.CASCADE)
     applicant_name = models.CharField(max_length=255)

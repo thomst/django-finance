@@ -6,6 +6,7 @@ from searchkit.admin import SearchkitSearchAdmin as OriginalSearchkitSearchAdmin
 from .forms import SearchForm
 from .models import OrderAccount
 from .models import BankStatement
+from .models import SearchToAccount
 
 
 @admin.register(OrderAccount)
@@ -43,7 +44,17 @@ class BankStatementAdmin(admin.ModelAdmin):
 # Unregister the original Search admin.
 admin.site.unregister(Search)
 
+
+class SearchToAcountInline(admin.TabularInline):
+    model = SearchToAccount
+    extra = 1
+
+
 # Register a new Search admin using our customized SearchForm.
 @admin.register(Search)
 class SearchkitSearchAdmin(OriginalSearchkitSearchAdmin):
     form = SearchForm
+
+    inlines = [
+        SearchToAcountInline,
+    ]
